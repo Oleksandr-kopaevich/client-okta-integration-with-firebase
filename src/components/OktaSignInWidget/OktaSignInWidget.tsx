@@ -20,7 +20,6 @@ const OktaSignInWidget: React.FC<OktaSignInWidgetT> = ({
     if (!widgetRef.current) {
       return () => {};
     }
-
     const widget = new OktaSignIn(config);
 
     widget
@@ -29,9 +28,6 @@ const OktaSignInWidget: React.FC<OktaSignInWidgetT> = ({
       })
       .then(onSuccess)
       .catch(onError);
-
-    // widget.renderEl({ el: widgetRef.current }, onSuccess, onError);
-
     return () => widget.remove();
   }, []);
 

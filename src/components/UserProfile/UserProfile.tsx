@@ -14,10 +14,10 @@ const UserProfile: React.FC = () => {
 
   const logout = async () => {
     try {
-    oktaAuth.signOut();
-    firebase.auth().signOut();
+      oktaAuth.signOut();
+      firebase.auth().signOut();
     } catch (e) {
-      console.log("problems with signing out: ", e)
+      console.log("problems with signing out: ", e);
     }
   };
 
@@ -38,11 +38,18 @@ const UserProfile: React.FC = () => {
   const { displayName, email, uid } = user;
 
   return (
-    <div style={{ textAlign: "left", padding: "30px" }}>
-      <h1>
+    <div
+      style={{
+        textAlign: "left",
+        padding: "30px",
+        maxWidth: "500px",
+        margin: "0 auto",
+      }}
+    >
+      <h1 style={{ fontSize: "24px" }}>
         User info from firebase (was got during registration from okta account)
       </h1>
-      <div>{logoutButton}</div>
+      <div style={{ margin: "15px 0" }}>{logoutButton}</div>
       <div>
         <div>
           <b>Name:</b>

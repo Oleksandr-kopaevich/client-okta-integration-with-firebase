@@ -7,7 +7,7 @@
 /.pnp
 .pnp.js
 .private
-src/config.ts
+.env
 # testing
 /coverage
 
