@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# What for?
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is frontend part of integration with [Okta](https://developer.okta.com) and [Firebase](https://firebase.google.com).
 
-## Available Scripts
+## Live demo
 
-In the project directory, you can run:
+https://explore-firebase-37b42.web.app/ - Uses Firebase hosting for frontend part (React application) and Firebase functions for [backend part (Nestjs application)](https://github.com/Oleksandr-kopaevich/nest-server-for-okta-integration-with-firebase)
 
-### `npm start`
+## How to start 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Create `.env` file and fill next variables:  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<b>REACT_APP_OKTA_ORG_URL</b> - You can copy your domain from the Okta Admin Console. (without 'https://')   
+<b>REACT_APP_OKTA_CLIENT_ID</b> - Find it in "Applications" section   
 
-### `npm test`
+Take these values from firebase project setting  
+<b>REACT_APP_FIREBASE_apiKey</b>  
+<b>REACT_APP_FIREBASE_authDomain</b>  
+<b>REACT_APP_FIREBASE_projectId</b>  
+<b>REACT_APP_FIREBASE_storageBucket</b>  
+<b>REACT_APP_FIREBASE_messagingSenderId</b>  
+<b>REACT_APP_FIREBASE_appId</b>  
+<b>REACT_APP_FIREBASE_measurementId</b>  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<b>REACT_APP_CUSTOM_TOKEN_ENDPOINT</b> - Full URL to send JWT token to  
+<b>REACT_APP_CUSTOM_TOKEN_ENDPOINT_LOCALHOST</b> - Same usage as CUSTOM_TOKEN_ENDPOINT but for local development we may need another URL  
 
-### `npm run build`
+2. Run to install node modules
+```bash 
+npm i
+```
+and make sure thay your Firebase CLI is up to date
+```bash 
+npm install -g firebase-tools
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. To run locally type 
+ ```bash 
+npm run start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Or deploy app to firebase hosting
+ ```bash 
+npm run deploy
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
