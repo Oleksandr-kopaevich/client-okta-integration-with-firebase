@@ -3,7 +3,6 @@ import { LoginCallback, SecureRoute, Security } from "@okta/okta-react";
 import React from "react";
 import { Route, useHistory } from "react-router-dom";
 import "./App.css";
-import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import UserProfile from "./components/UserProfile/UserProfile";
 import { oktaAuthConfig, oktaSignInConfig } from "./config";
@@ -40,11 +39,10 @@ const App = () => {
             />
             <Route path="/login/callback" component={LoginCallback} />
             <SecureRoute
-              path="/user-profile"
+              path={["/user-profile", "/"]}
               exact={true}
               component={UserProfile}
             />
-            <Route path="/" exact={true} component={Home} />
           </Security>
         </div>
       </div>
