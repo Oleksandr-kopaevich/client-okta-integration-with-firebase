@@ -9,7 +9,7 @@ const DEFAULT_USER = {
 };
 
 const UserProfile: React.FC = () => {
-  const [user, setUser] = useState(DEFAULT_USER);
+  const [user, setUser] = useState<firebase.User | null>(null);
   const { oktaAuth, authState } = useOktaAuth();
 
   const logout = async () => {
@@ -26,16 +26,14 @@ const UserProfile: React.FC = () => {
   );
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user: any) => {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
-        // User is signed in. Display some user profile information.
-        console.log("firebase.auth().onAuthStateChanged", user);
       }
     });
   }, []);
 
-  const { displayName, email, uid } = user;
+  const { displayName, email, uid } = user || DEFAULT_USER;
 
   return (
     <div

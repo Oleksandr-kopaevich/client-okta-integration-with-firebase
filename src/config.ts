@@ -17,18 +17,33 @@ export const CUSTOM_TOKEN_ENDPOINT =
     : process.env.REACT_APP_CUSTOM_TOKEN_ENDPOINT) || "";
 
 const oktaBaseConfig = {
-  clientId: OKTA_CLIENT_ID,
+  clientId: OKTA_CLIENT_ID || "",
   redirectUri: window.location.origin + "/login/callback",
   scope: "openid profile email",
   scopes: ["openid", "profile", "email"],
 };
 
-const oktaAuthConfig = {
+type OktaBaseConfigT = {
+  clientId: string;
+  redirectUri: string;
+  scope: string;
+  scopes: string[];
+};
+
+export type OktaAuthConfigT = OktaBaseConfigT & {
+  issuer: string;
+};
+
+export type OktaSignInConfigT = OktaBaseConfigT & {
+  baseUrl: string;
+};
+
+const oktaAuthConfig: OktaAuthConfigT = {
   ...oktaBaseConfig,
   issuer: `${OKTA_ORG_URL}/oauth2/default`,
 };
 
-const oktaSignInConfig = {
+const oktaSignInConfig: OktaSignInConfigT = {
   ...oktaBaseConfig,
   baseUrl: OKTA_ORG_URL,
 };

@@ -2,14 +2,16 @@
 import OktaSignIn from "@okta/okta-signin-widget";
 import "@okta/okta-signin-widget/dist/css/okta-sign-in.min.css";
 import React, { useEffect, useRef } from "react";
+import { Tokens } from "@okta/okta-auth-js";
+import { OktaSignInConfigT } from "../../config";
 
-type OktaSignInWidgetT = {
-  config: any;
-  onSuccess: (req: any) => any;
-  onError: (err: any) => void;
+type OktaSignInWidgetPropsT = {
+  config: OktaSignInConfigT;
+  onSuccess: (tokens: Tokens) => void;
+  onError: (err: Error) => void;
 };
 
-const OktaSignInWidget: React.FC<OktaSignInWidgetT> = ({
+const OktaSignInWidget: React.FC<OktaSignInWidgetPropsT> = ({
   config,
   onSuccess,
   onError,
@@ -20,6 +22,7 @@ const OktaSignInWidget: React.FC<OktaSignInWidgetT> = ({
     if (!widgetRef.current) {
       return () => {};
     }
+
     const widget = new OktaSignIn(config);
 
     widget
